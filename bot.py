@@ -105,12 +105,12 @@ def extract_album(url: str) -> tuple[str, list[str]]:
             value = img.get(attr)
             if value:
                 candidates.append(value)
-                    for script in soup.find_all("script"):
+    for script in soup.find_all("script"):
         text = script.string or script.get_text(" ", strip=False)
         if not text:
             continue
 
-        candidates.extend(
+            candidates.extend(
             re.findall(
                 r'https?:\\?/\\?/[^"\'\s]+?\.(?:jpg|jpeg|png|webp)(?:\?[^"\'\s]*)?',
                 text,
