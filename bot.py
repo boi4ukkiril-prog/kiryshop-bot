@@ -174,7 +174,11 @@ def download_and_watermark(urls: list[str], folder: Path, referer: str) -> list[
         "Referer": referer,
         "Accept": "image/avif,image/webp,image/apng,image/jpeg,image/*,*/*;q=0.8",
     }
-    output_files: list[Path] = []
+        output_files: list[Path] = []
+
+    for index, image_url in enumerate(urls, start=1):
+        response = requests.get(
+            image_url,
             headers=headers,
             timeout=REQUEST_TIMEOUT,
             stream=True,
