@@ -166,11 +166,22 @@ def add_watermark(source_path: Path, output_path: Path) -> None:
 
         result = Image.alpha_composite(image, overlay).convert("RGB")
         result.save(output_path, format="JPEG", quality=91, optimize=True)
+def download_and_watermark(
+    urls: list[str],
+    folder: Path,
+    referer: str,
+) -> list[Path]:
+    headers = {
+    "User-Agent": (
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) "
+        "AppleWebKit/605.1.15 Version/18.0 Mobile/15E148 Safari/604.1"
+    ),
+    "Referer": referer,
+    "Accept": "image/avif,image/webp,image/apng,image/jpeg,image/*,*/*;q=0.8",
+}
 
+   
 
-def download_and_watermark(urls: list[str], folder: Path) -> list[Path]:
-    headers = {"User-Agent": "Mozilla/5.0"}
-    output_files: list[Path] = []
 
     for index, image_url in enumerate(urls, start=1):
         response = requests.get(
@@ -213,7 +224,12 @@ async def handle_yupoo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 
         with tempfile.TemporaryDirectory() as tmp:
             folder = Path(tmp)
-            files = await asyncio.to_thread(download_and_watermark, image_urls, folder)
+            files = await asyncio.to_thread(
+    download_and_watermark,
+    image_urls,
+    folder,
+    text,
+)
 
             caption = (
                 f"<b>{html.escape(english_title)}</b>\n\n"
