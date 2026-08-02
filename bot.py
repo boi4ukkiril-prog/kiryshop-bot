@@ -14,9 +14,9 @@ from PIL import Image, ImageDraw, ImageFont
 from telegram import InputMediaPhoto, Update
 from telegram.ext import Application, ContextTypes, MessageHandler, filters
 
-BOT_TOKEN = os.environ["BOT_TOKEN"]
-CHANNEL_ID = os.environ["CHANNEL_ID"]
-WATERMARK_TEXT = os.getenv("WATERMARK_TEXT", "KiryShop")
+BOT_TOKEN = os.environ["BOT_TOKEN"].strip()
+CHANNEL_ID = os.environ["CHANNEL_ID"].strip()
+WATERMARK_TEXT = os.getenv("WATERMARK_TEXT", "KiryShop").strip()
 ALLOWED_USER_ID = os.getenv("ALLOWED_USER_ID", "").strip()
 
 MAX_PHOTOS = 4
