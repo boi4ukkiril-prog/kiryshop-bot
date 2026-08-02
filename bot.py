@@ -14,8 +14,8 @@ from PIL import Image, ImageDraw, ImageFont
 from telegram import InputMediaPhoto, Update
 from telegram.ext import Application, ContextTypes, MessageHandler, filters
 
-BOT_TOKEN = os.environ["BOT_TOKEN"].strip()
-CHANNEL_ID = os.environ["CHANNEL_ID"].strip()
+BOT_TOKEN = "".join(os.environ["BOT_TOKEN"].split())
+CHANNEL_ID = "".join(os.environ["CHANNEL_ID"].split())
 WATERMARK_TEXT = os.getenv("WATERMARK_TEXT", "KiryShop").strip()
 ALLOWED_USER_ID = os.getenv("ALLOWED_USER_ID", "").strip()
 
