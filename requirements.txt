@@ -1,0 +1,5 @@
+python-telegram-bot==22.3
+beautifulsoup4
+requests
+deep-translator
+psycopg[binary]
