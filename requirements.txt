@@ -1,5 +1,6 @@
-python-telegram-bot==22.3
-beautifulsoup4
-requests
-deep-translator
-psycopg[binary]
+python-telegram-bot>=22,<23
+requests>=2.31,<3
+beautifulsoup4>=4.12,<5
+Pillow>=10,<12
+deep-translator>=1.11,<2
+psycopg[binary]>=3.1,<4
